@@ -4,5 +4,5 @@ https://j-0-e.github.io/gamedev2023joe/public/index.html
 ______________________________________________________________________________________________
 Jon's Game
 ______________________________________________________________________________________________
-https://theactualzenaldv2.github.io/Game-Development-2023/assignments/final/v0.1-plankton.html
+https://theactualzenaldv2.github.io/Game-Development-2023/assignments/final/v0.2-plankton.html
 ______________________________________________________________________________________________
