@@ -12,7 +12,7 @@ T1A05 (Arrays)
 
 <h1 align="center">arrays</h1>
     <label>
-      Select a name:
+      Player1:
       <select id="nameDropdown"></select>
     </label>
     <label>
@@ -26,7 +26,7 @@ T1A05 (Arrays)
   </div>
   
   <script>
-    // Initialize the dropdown with names from local storage
+
     var nameDropdown = document.getElementById("nameDropdown");
     var storedNames = JSON.parse(localStorage.getItem("names")) || [];
     var zombies = JSON.parse(localStorage.getItem("zombies")) || {};
@@ -42,13 +42,12 @@ T1A05 (Arrays)
       }
     }
 
-    // Function to add a new name to the dropdown and local storage
     function addName() {
       var newName = document.getElementById("nameInput").value.toLowerCase();
       if (newName && !storedNames.includes(newName)) {
         storedNames.push(newName);
 
-        // Randomly assign zombie status if it doesn't exist
+   
         if (zombies[newName] === undefined) {
           zombies[newName] = Math.random() < 0.5;
         }
