@@ -1,23 +1,62 @@
 <h2 align=center>Classes</h2>
-<script>
-  class myPerson {
-    constructor(passName, passAge) {
-      this.myName = passName;
-      this.myAge = passAge;
-    }
-  myShow(){
-    document.getElementById('myDiv01').innerHTML = 'Hello '+ this.myName + '. You are ' + this.myAge + ' years old<br>'
-  }
-  } //end class myAnimal
-</script>
-Name<input type="text" id="name"><br><br>
-Age<input type="text" id="age"><br><br>
-<input type=button value="Class Person" onClick="{
+ <script>
 
-  myCharacter = new myPerson (document.getElementById('name').value, document.getElementById('age').value)
-  myCharacter.myShow()
-  }">
-  <div id="myDiv01">...</div>
+            class myPerson {
+                constructor(passName, passAge) {
+                    this.myName = passName
+                    this.myAge = passAge
+                }
+
+                myShow() {
+                    document.getElementById('myDiv01').innerHTML = 'Hello ' + this.myName + '. You are ' + this.myAge + ' years old<br>'
+                }
+            }
+            
+            class myEmployee extends myPerson {
+                constructor(passName, passAge, jobTitle) {
+                    super(passName, passAge);
+                    this.jobTitle = jobTitle;
+                }
+
+                myShow() {
+                    document.getElementById('myDiv01').innerHTML = 'Hello ' + this.myName + '. You are ' + this.myAge + ' years old and work as a ' + this.jobTitle + '<br>';
+                }
+            }
+
+            function updateOutput() {
+                nameInput = document.getElementById('nameInput').value;
+                ageInput = document.getElementById('ageInput').value;
+                jobInput = document.getElementById('jobInput').value;
+            
+                if (nameInput && ageInput && jobInput != "") {
+                    myCharacter = new myEmployee(nameInput, ageInput, jobInput);
+                    myCharacter.myShow();
+                } else {
+                    alert("Please fill in all fields")
+                }
+            }
+        </script>
+    </head>
+
+    <body class="body01">
+
+        <div class="navbar">
+            <a href="./index.html">Index</a>
+            <a href="https://github.com/treybertram06/gamedev12trey/tree/main">Github</a>
+        </div>
+      
+        <h5>Version 0.0.2</h5>
+          <h1 class="pageTitle">T1Z04 Classes Trey</h1>
+          <br><hr>
+
+        <form class="form01">
+            <input type="text" placeholder="Enter name..." id="nameInput">
+            <input type="number" id="ageInput">
+            <input type="text" placeholder="Enter occupation..." id="jobInput">
+            <input type="button" value="New Person" class="buttonStyle01" align="center" onClick="updateOutput()">
+        </form>
+
+        <div id="myDiv01" align="center">...</div>
 
   <style> 
 
