@@ -1,0 +1,86 @@
+T1A08 (Calculator)
+
+<br>
+
+<input type=number id="start"><br>
+<input type="number" id="second"><br>
+<button id="add" onclick="addition()">+</button><br>
+<button id="subtract" onclick="subtraction()">-</button><br>
+<button id="multiply" onclick="multiplication()">x</button><br>
+<button id="divide" onclick="divide()">/</button><br>
+<script>
+function addition() {
+    var start = parseInt(document.getElementById('start').value);
+    var second = parseInt(document.getElementById('second').value);
+    var result = start + second;
+
+    document.getElementById('answer').innerHTML = result;
+}
+function subtraction() {
+    var start = document.getElementById('start').value;
+    var second = document.getElementById('second').value;
+    var result = start - second;
+
+    document.getElementById('answer').innerHTML = result;
+}
+function multiplication() {
+    var start = document.getElementById('start').value;
+    var second = document.getElementById('second').value;
+    var result = start * second;
+
+    document.getElementById('answer').innerHTML = result;
+}
+function divide() {
+    var start = document.getElementById('start').value;
+    var second = document.getElementById('second').value;
+    var result = start / second;
+
+    document.getElementById('answer').innerHTML = result;
+}
+</script>
+<div id="answer">...</div><br><br>
+  <style> 
+
+  
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+  
+  body {
+    
+  
+font-family: 'Oswald', sans-serif; 
+    font-size: 30px;
+    background-color: black;
+       background-image: url(https://i.ytimg.com/vi/xzMBzDdCp2o/maxresdefault.jpg);
+    
+    color: white;
+    text-align: center;
+background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+  }
+  
+  a {
+    color: #white;
+  }
+  
+  a:hover {
+    color: white;
+  } 
+  
+  
+  h1 {
+
+    text-align: center;
+    padding-top: 60px;
+
+  
+  }
+
+
+  
+  .background-image {
+    filter: blur(2px);
+    -webkit-filter: blur(8px);
+  }
+       </style>
