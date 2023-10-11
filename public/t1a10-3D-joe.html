@@ -1,32 +1,16 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>three.js webgl - animation - keyframes</title>
+		<title>three.js webgl - lights - rect area light</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="main.css">
-		<style>
-			body {
-				background-color: #bfe3dd;
-				color: #000;
-			}
-
-			a {
-				color: #2983ff;
-			}
-		</style>
 	</head>
-
 	<body>
 
-		<div id="container"></div>
-
 		<div id="info">
-			<a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> webgl - animation - keyframes<br/>
-			Model: <a href="https://artstation.com/artwork/1AGwX" target="_blank" rel="noopener">Littlest Tokyo</a> by
-			<a href="https://artstation.com/glenatron" target="_blank" rel="noopener">Glen Fox</a>, CC Attribution.
+			<a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> - THREE.RectAreaLight<br/>
+			by <a href="http://github.com/abelnation" target="_blank" rel="noopener">abelnation</a>
 		</div>
 
 		<script type="importmap">
@@ -45,92 +29,87 @@
 			import Stats from 'three/addons/libs/stats.module.js';
 
 			import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-			import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+			import { RectAreaLightHelper } from 'three/addons/helpers/RectAreaLightHelper.js';
+			import { RectAreaLightUniformsLib } from 'three/addons/lights/RectAreaLightUniformsLib.js';
 
-			import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-			import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+			let renderer, scene, camera;
+			let stats, meshKnot;
 
-			let mixer;
+			init();
 
-			const clock = new THREE.Clock();
-			const container = document.getElementById( 'container' );
+			function init() {
 
-			const stats = new Stats();
-			container.appendChild( stats.dom );
-
-			const renderer = new THREE.WebGLRenderer( { antialias: true } );
-			renderer.setPixelRatio( window.devicePixelRatio );
-			renderer.setSize( window.innerWidth, window.innerHeight );
-			container.appendChild( renderer.domElement );
-
-			const pmremGenerator = new THREE.PMREMGenerator( renderer );
-
-			const scene = new THREE.Scene();
-			scene.background = new THREE.Color( 0xbfe3dd );
-			scene.environment = pmremGenerator.fromScene( new RoomEnvironment( renderer ), 0.04 ).texture;
-
-			const camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 100 );
-			camera.position.set( 5, 2, 8 );
-
-			const controls = new OrbitControls( camera, renderer.domElement );
-			controls.target.set( 0, 0.5, 0 );
-			controls.update();
-			controls.enablePan = false;
-			controls.enableDamping = true;
-
-			const dracoLoader = new DRACOLoader();
-			dracoLoader.setDecoderPath( 'jsm/libs/draco/gltf/' );
-
-			const loader = new GLTFLoader();
-			loader.setDRACOLoader( dracoLoader );
-			loader.load( 'models/gltf/LittlestTokyo.glb', function ( gltf ) {
-
-				const model = gltf.scene;
-				model.position.set( 1, 1, 0 );
-				model.scale.set( 0.01, 0.01, 0.01 );
-				scene.add( model );
-
-				mixer = new THREE.AnimationMixer( model );
-				mixer.clipAction( gltf.animations[ 0 ] ).play();
-
-				animate();
-
-			}, undefined, function ( e ) {
-
-				console.error( e );
-
-			} );
-
-
-			window.onresize = function () {
-
-				camera.aspect = window.innerWidth / window.innerHeight;
-				camera.updateProjectionMatrix();
-
+				renderer = new THREE.WebGLRenderer( { antialias: true } );
+				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.setAnimationLoop( animation );
+				document.body.appendChild( renderer.domElement );
 
-			};
+				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 );
+				camera.position.set( 0, 5, - 15 );
 
+				scene = new THREE.Scene();
 
-			function animate() {
+				RectAreaLightUniformsLib.init();
 
-				requestAnimationFrame( animate );
+				const rectLight1 = new THREE.RectAreaLight( 0xff0000, 5, 4, 10 );
+				rectLight1.position.set( - 5, 5, 5 );
+				scene.add( rectLight1 );
 
-				const delta = clock.getDelta();
+				const rectLight2 = new THREE.RectAreaLight( 0x00ff00, 5, 4, 10 );
+				rectLight2.position.set( 0, 5, 5 );
+				scene.add( rectLight2 );
 
-				mixer.update( delta );
+				const rectLight3 = new THREE.RectAreaLight( 0x0000ff, 5, 4, 10 );
+				rectLight3.position.set( 5, 5, 5 );
+				scene.add( rectLight3 );
 
+				scene.add( new RectAreaLightHelper( rectLight1 ) );
+				scene.add( new RectAreaLightHelper( rectLight2 ) );
+				scene.add( new RectAreaLightHelper( rectLight3 ) );
+
+				const geoFloor = new THREE.BoxGeometry( 2000, 0.1, 2000 );
+				const matStdFloor = new THREE.MeshStandardMaterial( { color: 0xbcbcbc, roughness: 0.1, metalness: 0 } );
+				const mshStdFloor = new THREE.Mesh( geoFloor, matStdFloor );
+				scene.add( mshStdFloor );
+
+				const geoKnot = new THREE.TorusKnotGeometry( 1.5, 0.5, 200, 16 );
+				const matKnot = new THREE.MeshStandardMaterial( { color: 0xffffff, roughness: 0, metalness: 0 } );
+				meshKnot = new THREE.Mesh( geoKnot, matKnot );
+				meshKnot.position.set( 0, 5, 0 );
+				scene.add( meshKnot );
+
+				const controls = new OrbitControls( camera, renderer.domElement );
+				controls.target.copy( meshKnot.position );
 				controls.update();
 
-				stats.update();
+				//
 
-				renderer.render( scene, camera );
+				window.addEventListener( 'resize', onWindowResize );
+
+				stats = new Stats();
+				document.body.appendChild( stats.dom );
 
 			}
 
+			function onWindowResize() {
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				camera.aspect = ( window.innerWidth / window.innerHeight );
+				camera.updateProjectionMatrix();
+
+			}
+
+			function animation( time ) {
+
+				meshKnot.rotation.y = time / 1000;
+
+				renderer.render( scene, camera );
+
+				stats.update();
+
+			}
 
 		</script>
-
 	</body>
-
 </html>
