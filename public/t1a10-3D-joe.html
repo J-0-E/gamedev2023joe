@@ -1,115 +1,151 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>three.js webgl - lights - rect area light</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<link type="text/css" rel="stylesheet" href="main.css">
-	</head>
-	<body>
+<head>
+    <meta charset="UTF-8">
+    <title>Thing</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/three/examples/js/loaders/FBXLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/GLTFLoader.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/fflate@0.8.0/umd/index.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
+   
+        
+<script>
+// Create a scene
+const scene = new THREE.Scene();
 
-		<div id="info">
-			<a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> - THREE.RectAreaLight<br/>
-			by <a href="http://github.com/abelnation" target="_blank" rel="noopener">abelnation</a>
-		</div>
+    // Create the camera
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10000);
 
-		<script type="importmaps">
-			{
-				"imports": {
-					"three": ".https://threejs.org/examples/#webgl_lights_rectarealight./build/three.module.js",
-					"three/addons/": "./jsm/"
-				}
-			}
-		</script>
 
-		<script type="module">
+// Create a directional light
+const directionalLight = new THREE.DirectionalLight(0xffffff, 0);
+directionalLight.position.set(1, 1, 1);
+scene.add(directionalLight);
 
-			import * as THREE from 'three';
+// Create an ambient light for overall scene illumination
+const ambientLight = new THREE.AmbientLight(0x404040, 1.5, 100); // Adjust the color as needed
+scene.add(ambientLight);
 
-			import Stats from 'three/addons/libs/stats.module.js';
+// Create a point light for localized illumination (e.g., spotlight)
+const pointLight = new THREE.PointLight(0x404040, 100, 100); // Color, intensity, distance
+pointLight.position.set(0, 2, 0); // Adjust the position
+scene.add(pointLight);
 
-			import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-			import { RectAreaLightHelper } from 'three/addons/helpers/RectAreaLightHelper.js';
-			import { RectAreaLightUniformsLib } from 'three/addons/lights/RectAreaLightUniformsLib.js';
 
-			let renderer, scene, camera;
-			let stats, meshKnot;
 
-			init();
+const textureLoader = new THREE.TextureLoader();
 
-			function init() {
+    const texture = textureLoader.load('https://images.fineartamerica.com/images-medium-large-5/abstract-seamless-pattern-with-diagonal-antikwar.jpg');
 
-				renderer = new THREE.WebGLRenderer( { antialias: true } );
-				renderer.setPixelRatio( window.devicePixelRatio );
-				renderer.setSize( window.innerWidth, window.innerHeight );
-				renderer.setAnimationLoop( animation );
-				document.body.appendChild( renderer.domElement );
+    // Create the skybox geometry
+    const skyboxGeometry = new THREE.SphereGeometry(1000, 32, 32);
 
-				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 );
-				camera.position.set( 0, 5, - 15 );
+    // Create the skybox material with the loaded texture
+    const skyboxMaterial = new THREE.MeshStandardMaterial({
+        map: texture,
+        side: THREE.BackSide
+    });
+    // Create the skybox mesh
+    const skybox = new THREE.Mesh(skyboxGeometry, skyboxMaterial);
+    skybox.position.set(0, 0, 0);
 
-				scene = new THREE.Scene();
+    // Add the skybox to the scene
+    scene.add(skybox);
 
-				RectAreaLightUniformsLib.init();
 
-				const rectLight1 = new THREE.RectAreaLight( 0xff0000, 5, 4, 10 );
-				rectLight1.position.set( - 5, 5, 5 );
-				scene.add( rectLight1 );
+directionalLight.position.set(1, 1, 1);
+directionalLight.castShadow = true; // Enable shadow casting
 
-				const rectLight2 = new THREE.RectAreaLight( 0x00ff00, 5, 4, 10 );
-				rectLight2.position.set( 0, 5, 5 );
-				scene.add( rectLight2 );
+// Configure shadow properties
+directionalLight.shadow.mapSize.width = 1024; // Shadow map width
+directionalLight.shadow.mapSize.height = 1024; // Shadow map height
+directionalLight.shadow.camera.near = 0.1; // Near plane of the shadow camera
+directionalLight.shadow.camera.far = 10; // Far plane of the shadow camera
 
-				const rectLight3 = new THREE.RectAreaLight( 0x0000ff, 5, 4, 10 );
-				rectLight3.position.set( 5, 5, 5 );
-				scene.add( rectLight3 );
+scene.add(directionalLight);
 
-				scene.add( new RectAreaLightHelper( rectLight1 ) );
-				scene.add( new RectAreaLightHelper( rectLight2 ) );
-				scene.add( new RectAreaLightHelper( rectLight3 ) );
+// Create a renderer
+renderer = new THREE.WebGLRenderer( { antialias: true } );
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
 
-				const geoFloor = new THREE.BoxGeometry( 2000, 0.1, 2000 );
-				const matStdFloor = new THREE.MeshStandardMaterial( { color: 0xbcbcbc, roughness: 0.1, metalness: 0 } );
-				const mshStdFloor = new THREE.Mesh( geoFloor, matStdFloor );
-				scene.add( mshStdFloor );
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true; // Enable smooth camera movement
+controls.dampingFactor = 1; // Adjust the damping factor for smoother movement
+controls.rotateSpeed = 0.2; // Adjust the rotation speed
 
-				const geoKnot = new THREE.TorusKnotGeometry( 1.5, 0.5, 200, 16 );
-				const matKnot = new THREE.MeshStandardMaterial( { color: 0xffffff, roughness: 0, metalness: 0 } );
-				meshKnot = new THREE.Mesh( geoKnot, matKnot );
-				meshKnot.position.set( 0, 5, 0 );
-				scene.add( meshKnot );
 
-				const controls = new OrbitControls( camera, renderer.domElement );
-				controls.target.copy( meshKnot.position );
-				controls.update();
 
-				//
 
-				window.addEventListener( 'resize', onWindowResize );
 
-				stats = new Stats();
-				document.body.appendChild( stats.dom );
+let model; //init model variable
+const loader1 = new THREE.FBXLoader();
 
-			}
+loader1.load('https://J-0-E.github.io/gamedev2023joe/public/loop face.fbx', function (object) {
+    model = object;
+    model.scale.set(0.003, 0.003, 0.003); // Set the scale of the gun model
+    scene.add(model); // Add the loaded model to the scene
+    // Set the position of the camera behind the gun
+const cameraDistance = 5; // Adjust the distance as needed
+const cameraHeight = 0;   // Adjust the height as needed
 
-			function onWindowResize() {
+camera.position.set(
+    model.position.x - cameraDistance,
+    model.position.y + cameraHeight,
+    model.position.z
+);
 
-				renderer.setSize( window.innerWidth, window.innerHeight );
-				camera.aspect = ( window.innerWidth / window.innerHeight );
-				camera.updateProjectionMatrix();
+// Point the camera at the gun
+camera.lookAt(model.position);
 
-			}
 
-			function animation( time ) {
 
-				meshKnot.rotation.y = time / 1000;
 
-				renderer.render( scene, camera );
 
-				stats.update();
 
-			}
+});
 
-		</script>
-	</body>
+// Set up animation
+const animate = () => {
+    requestAnimationFrame(animate);
+
+    // Rotate the model (change 'model' to 'gun')
+    if (model) {
+        model.rotation.y -= 0.005;
+        skybox.rotation.y -= 0.001;
+
+
+    }
+
+    renderer.render(scene, camera);
+};
+
+// Handle window resize
+window.addEventListener('resize', () => {
+    const newWidth = window.innerWidth;
+    const newHeight = window.innerHeight;
+
+    camera.aspect = newWidth / newHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize(newWidth, newHeight);
+});
+
+animate();
+
+    </script>
+</body>
 </html>
