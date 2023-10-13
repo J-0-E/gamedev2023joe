@@ -1,0 +1,17 @@
+
+Age:<input type="range" id="myAge" min="1" max="100" value="17" oninput="rangeValue.innerText = this.value">
+<input type="text" id="myName" value="Name" size="30">  
+    
+<input id="myButton" type="button" value="Show" onclick="{
+      document.getElementById('myDiv').innerHTML = document.getElementById('myName').value = document.getElementById('myAge').value                                             
+}"><br><br>
+
+<input type=button value="Are you older than 17?" onclick="{
+let myIn01 = parseFloat(document.getElementById('myAge').value)
+if (myIn01 >=17){
+document.getElementById('myDiv').innerHTML = myIn01 + ' You can drink'
+} else {
+document.getElementById('myDiv').innerHTML = myIn01 + ' You cannot drink'}
+}">
+
+<div id='myDiv'>...</div><br>
