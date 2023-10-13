@@ -1,17 +1,19 @@
 <h1>Funtest-by-joe.html</h1>
 <br>
-Age:<input type="range" id="myAge" min="1" max="100" value="17" oninput="rangeValue.innerText = this.value">
+Age:<input type="text" id="myAge" min="1" max="100" value="17" oninput="rangeValue.innerText = this.value">
 <br>
-<input type="text" id="myName" value="Name" size="30">  
+Name:<input type="text" id="myName" value="Joe" size="30">  
 <br>
-<input id="myButton" type="button" value="Show" onclick="{
-document.getElementById('myDiv').innerHTML = document.getElementById('myName').value = document.getElementById('myAge').value                                             
-}"><br><br>
 <input type=button value="Are you older than 17?" onclick="{
-let myIn01 = parseFloat(document.getElementById('myAge').value)
-if (myIn01 >=17){
-document.getElementById('myDiv').innerHTML = myIn01 + ' You can drink'
+let myage = parseFloat(document.getElementById('myAge').value)
+if (myage >=17){
+document.getElementById('myDiv').innerHTML = myage + 'yrs old means you can drink'
 } else {
-document.getElementById('myDiv').innerHTML = myIn01 + ' You cannot drink'}
+document.getElementById('myDiv').innerHTML = myage + 'yrs old means you cannot drink'}
+let myname = parseFloat(document.getElementById('myName').value)
+if (myname >=joe){
+document.getElementById('myDiv').innerHTML = myname + 'Nice name'
+} else {
+document.getElementById('myDiv').innerHTML = myname + 'Your name sucks'}
 }">
 <div id='myDiv'>...</div><br>
