@@ -1,6 +1,25 @@
 T1A11 (Loops)
 
+Loops: <input id="myNum01" type=number value="5"> <br>
 
+<input type=button value="Basic for loop with decisions" onclick="{
+  document.getElementById('myDiv01').innerHTML = ''
+  let myTemp = ''
+  
+  let myMax = parseInt(document.getElementById('myNum01').value)
+  
+  for (let myLoop = 0; myLoop < myMax; myLoop++){
+    if (myLoop*2 >myMax){
+      myTemp += ' Pie'
+    }
+    
+    myTemp += 'rat #: ' + myLoop + '<br>'
+  }
+  
+  document.getElementById('myDiv01').innerHTML = myTemp
+}">
+
+<div id="myDiv01">...</div>
 
 <style> 
 
