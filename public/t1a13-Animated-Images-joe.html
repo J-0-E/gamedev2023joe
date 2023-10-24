@@ -1,16 +1,7 @@
 <style>
-    #myDiv01, #myDiv02, #myDiv03, #myDiv04, #myDiv05 {
-    color: black;
-    text-align: center;
-    font-size: 18px;
-    padding: 50px;
-    position: absolute;
-    transition: all 1s ease-in-out;  }
-  body {
-    overflow: hidden;  }
-  .square {
-    position: absolute;
-    transition: transform 1s ease-in-out; }
+    #myDiv01, #myDiv02, #myDiv03, #myDiv04, #myDiv05 {    color: black;  text-align: center;   font-size: 18px; padding: 50px;  position: absolute;   transition: all 1s ease-in-out;  }
+  body {  overflow: hidden;  }
+  .square { position: absolute;   transition: transform 1s ease-in-out; }
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 <link rel="stylesheet" href="https://theactualzenaldv2.github.io/Game-Development-2023/assignments/templates/barebones.css">
@@ -20,19 +11,19 @@
 <div id="myDiv04" class="circle"> <img src="https://i.imgur.com/G5TgrSN.png" class="rounded-circle" alt="Circle Image" width="200" height="200"></div>
 <div id="myDiv05" class="circle"> <img src="https://i.imgur.com/jYtjvk3.png" class="rounded-circle" alt="Circle Image" width="200" height="200"></div>
 <script>
-  class MoveDiv {
-            constructor(element) {
-                this.element = element; }
-            showNewPos() {
-                const x = Math.random() * window.innerWidth;
-                const y = Math.random() * window.innerHeight;
-                this.element.style.left = x + 'px';
-                this.element.style.top = y + 'px'; }     }
+  class MoveDiv {  constructor(element) {   this.element = element; }
+            showNewPos() { const x = Math.random() * window.innerWidth; const y = Math.random() * window.innerHeight;   this.element.style.left = x + 'px';  this.element.style.top = y + 'px'; }     }
         const circleElements = document.querySelectorAll('.circle');
         const elements = Array.from(circleElements).map((element) => new MoveDiv(element));
-        elements.forEach((element) => {
-            element.showNewPos(); });
-        setInterval(() => {
-            elements.forEach((element) => {
-                element.showNewPos();  });  }, 1000);
+        elements.forEach((element) => {  element.showNewPos(); });
+        setInterval(() => { elements.forEach((element) => { element.showNewPos();  });  }, 1000);
 </script>
+<style>   
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');  
+body {font-family:'Oswald',sans-serif;font-size:30px;background-color:black;background-image:url(https://i.ytimg.com/vi/xzMBzDdCp2o/maxresdefault.jpg);color:white;text-align:center;background-position:center;
+background-repeat:no-repeat;background-size:cover;}  
+  a {   color: #white; }  
+  a:hover {   color: white;  }   
+  h1 {  text-align: center;   padding-top: 60px;   }
+  .background-image {   filter: blur(2px);   -webkit-filter: blur(8px);  }
+</style>
