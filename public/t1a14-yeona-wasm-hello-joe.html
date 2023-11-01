@@ -1,55 +1,42 @@
-
 <script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
 
-<h1 align=center>t1a14-year2-pyodide-fred.html</h1>
-<h1 align=center> <a href="https://github.com/pyodide/pyodide">Pyodide</a>: Python with Javascript in the browser</h1>
+<h1 align="center">Pyodide: Python with JavaScript in the browser</h1>
 
-Just enter some python code in the variable <b><i>myPython</i></b>, and resave this file to your own Github. Print() goes to the console.<br>
+<p>Enter some Python code in the textarea below, then click the "Run" button. The output will be displayed in the div below.</p>
 
-<input type=button value = run onclick = "evaluatePython()"> <br>
+<textarea id="pythonCode" rows="6" cols="40">
+    str("this is Adrien's code")
+</textarea>
 
-<div  id="outputDiv" >...</div>
+<button onclick="runPythonCode()">Run</button>
 
-
-
-<input type=button value=check onclick="{
-  let myMap = pyodide.globals.toJs
-  myOutput.innerHTML += JSON.stringify(myMap, null, '<br>')
-  console.log(myMap)
-}">
-
-
+<div id="outputDiv">Output will appear here.</div>
 
 <script>
-let pyodide
-const myOutput = document.getElementById("outputDiv");
-const myPython = print("Hello, World!") `
-a = sum([1, 2, 3, 4, 5])
-print(a)
+  let pyodide;
+  const pythonCodeTextarea = document.getElementById("pythonCode");
+  const outputDiv = document.getElementById("outputDiv");
 
+  async function initializePyodide() {
+    pyodide = await loadPyodide();
+    outputDiv.innerHTML = "Ready to run Python code.";
+  }
 
-` 
+  function runPythonCode() {
+    const myPython = pythonCodeTextarea.value;
+    outputDiv.innerHTML = "Running Python code...";
 
-function addToOutput(myResult) {
-  myOutput.innerHTML += "<br><br>Your answer is: " + myResult + "<br>";
-}
+    if (pyodide) {
+      try {
+        const result = pyodide.runPython(myPython);
+        outputDiv.innerHTML = "Output:<br>" + result;
+      } catch (err) {
+        outputDiv.innerHTML = "Error:<br>" + err.replace(/\n/g, '<br>');
+      }
+    } else {
+      outputDiv.innerHTML = "Pyodide is not initialized yet. Please wait.";
+    }
+  }
 
-myOutput.innerHTML = "Initializing...<br>";
-
-async function main() {
-  let pyodide = await loadPyodide();
-  myOutput.innerHTML += "Ready!<br> <br> Your code to run is:<br> >>>" + myPython.replace(/\n/g, '<br>') + "<br>";
-  return pyodide;
-}
-let pyodideReadyPromise = main();
-
-async function evaluatePython() {
-pyodide = await pyodideReadyPromise;
-try {
-  let myReturn = pyodide.runPython(myPython);
-  addToOutput(myReturn);
-} catch (err) {
-  addToOutput(err.replace(/\n/g, '<br>'));
-}
-}
+  initializePyodide();
 </script>
