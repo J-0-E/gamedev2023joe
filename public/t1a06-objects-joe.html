@@ -1,18 +1,16 @@
 T1A06 (Objects)
 <br>
 
-<input type=button value="Button" onClick="{
-       
-       let myPerson = {
-         'firstName' : 'Ben',
-         'lastName'  : 'Dover',
-         'age'       : '69',
-         'eyeColor'  : 'Green',
-         'height'    : '7 Inches',  
-         'hairColor' : 'Red', 
-         'weight'    : '911 Pounds',   
-         'skinColor' : 'Green'                                
-"}>
+<input id="myText01" type=text value="the car" ><br>
+
+<input type=button value="Show the car" onclick="{
+                                                  document.getElementById('myDiv01').innerHTML =
+                                                  document.getElementById('myText01').value
+                                                  }"><br>
+
+
+
+<div id="myDiv01">...</div>
 
 <style> 
 
