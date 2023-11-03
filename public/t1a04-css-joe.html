@@ -41,44 +41,47 @@ img:hover {
 </html>
 
 
-<style>
+<style> 
+
   
-#rainbow{
-      
-        color: transparent;
-        animation: effect 1.5s infinite;
-    }
- 
-    @keyframes effect {
-        0% {
-            background: linear-gradient(
-                red, red, orange );
-            -webkit-background-clip: text;
-        }
-        5% { background: linear-gradient(red, orange); -webkit-background-clip: text;}
-        10% { background: linear-gradient(orange, orange); -webkit-background-clip: text;}
-        15% { background: linear-gradient(orange, orange, yellow); -webkit-background-clip: text;}
-        20% { background: linear-gradient(orange, yellow); -webkit-background-clip: text;}
-        25% { background: linear-gradient(orange, yellow, yellow); -webkit-background-clip: text;}
-        30% { background: linear-gradient(yellow, yellow); -webkit-background-clip: text;}
-        35% { background: linear-gradient(yellow, yellow, lime); -webkit-background-clip: text;}
-        40% { background: linear-gradient(yellow, lime); -webkit-background-clip: text;}
-        45% { background: linear-gradient(yellow, lime, lime); -webkit-background-clip: text;}
-        50% { background: linear-gradient(lime, lime); -webkit-background-clip: text;}
-        55% { background: linear-gradient(lime, lime, teal); -webkit-background-clip: text;}
-        60% { background: linear-gradient(lime, teal); -webkit-background-clip: text;}
-        65% { background: linear-gradient(lime, teal, teal); -webkit-background-clip: text;}
-           70% { background: linear-gradient(teal, teal); -webkit-background-clip: text;}
-           75% { background: linear-gradient(teal, teal, purple); -webkit-background-clip: text;}
-        80% { background: linear-gradient(teal, purple); -webkit-background-clip: text;}
-        85% { background: linear-gradient(teal, purple, purple); -webkit-background-clip: text;}
-          90% { background: linear-gradient(purple, purple); -webkit-background-clip: text;}
-          95% { background: linear-gradient(purple, purple, red); -webkit-background-clip: text;}
- 
-        100% {
-            background: linear-gradient(
-                purple, red);
-            -webkit-background-clip: text;
-        }
-    }
-</style>
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+  
+  body {
+    
+  
+font-family: 'Oswald', sans-serif; 
+    font-size: 30px;
+    background-color: black;
+       background-image: url(https://i.ytimg.com/vi/xzMBzDdCp2o/maxresdefault.jpg);
+    
+    color: white;
+    text-align: center;
+background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+  }
+  
+  a {
+    color: #white;
+  }
+  
+  a:hover {
+    color: white;
+  } 
+  
+  
+  h1 {
+
+    text-align: center;
+    padding-top: 60px;
+
+  
+  }
+
+
+  
+  .background-image {
+    filter: blur(2px);
+    -webkit-filter: blur(8px);
+  }
