@@ -1,0 +1,36 @@
+<br>
+
+T1A14.1 (Extended Classes)
+
+<input type="button" value="Show Car" onclick="{
+            myDog = new myAnimal('Car' , 14)
+            myDog.myShow()
+        }">
+
+
+
+        <input type="button" value="Example of Extended Car" onclick="{
+            class myCat extends myAnimal{
+                myShow(){
+                    document.getElementById('myDiv01').innerHTML = this.myName + ' is a great truck<br>'
+                }
+            }
+
+            myPet = new myCat('Ford' , 72)
+            myPet.myShow()
+
+        }">
+
+        <div id="myDiv01">...</div>
+
+         <script>
+
+            class myAnimal{
+                constructor(passName, passAge){
+                    this.myName = passName;
+                    this.myAge = passAge;
+                }
+                myShow(){
+                    document.getElementById('myDiv01').innerHTML = 'Goodbye ' + this.myName + '<br>'
+                }
+            }
