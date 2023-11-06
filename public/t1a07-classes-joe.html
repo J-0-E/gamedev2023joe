@@ -1,100 +1,35 @@
 <h2 align=center>Classes</h2>
  <script>
-
-            class myPerson {
-                constructor(passName, passAge) {
-                    this.myName = passName
-                    this.myAge = passAge
-                }
-
-                myShow() {
-                    document.getElementById('myDiv01').innerHTML = 'Hello ' + this.myName + '. You are ' + this.myAge + ' years old<br>'
-                }
-            }
-            
-            class myEmployee extends myPerson {
-                constructor(passName, passAge, jobTitle) {
-                    super(passName, passAge);
-                    this.jobTitle = jobTitle;
-                }
-
-                myShow() {
-                    document.getElementById('myDiv01').innerHTML = 'Hello ' + this.myName + '. You are ' + this.myAge + ' years old and work as a ' + this.jobTitle + '<br>';
-                }
-            }
-
-            function updateOutput() {
-                nameInput = document.getElementById('nameInput').value;
-                ageInput = document.getElementById('ageInput').value;
-                jobInput = document.getElementById('jobInput').value;
-            
-                if (nameInput && ageInput && jobInput != "") {
-                    myCharacter = new myEmployee(nameInput, ageInput, jobInput);
-                    myCharacter.myShow();
-                } else {
-                location = 'https://youtu.be/dQw4w9WgXcQ?si=e8LHJFb-XC92jRVw'
-                                                    document.getElementById('myDiv05').innerHTML =
-                                                    document.getElementById('myText05').value
-                }
-            }
+            class myPerson {       constructor(passName, passAge) {                    this.myName = passName                    this.myAge = passAge            }
+                myShow() {                    document.getElementById('myDiv01').innerHTML = 'Hello ' + this.myName + '. You are ' + this.myAge + ' years old<br>'                }           }            
+            class myEmployee extends myPerson {             constructor(passName, passAge, jobTitle) {                    super(passName, passAge);                    this.jobTitle = jobTitle;           }
+            myShow() {                    document.getElementById('myDiv01').innerHTML = 'Hello ' + this.myName + '. You are ' + this.myAge + ' years old and work as a ' + this.jobTitle + '<br>';             }     }
+      function updateOutput() {    nameInput = document.getElementById('nameInput').value;   ageInput = document.getElementById('ageInput').value;      jobInput = document.getElementById('jobInput').value;         
+if (nameInput && ageInput && jobInput != "") {   myCharacter = new myEmployee(nameInput, ageInput, jobInput); myCharacter.myShow(); } else {  location = 'https://youtu.be/dQw4w9WgXcQ?si=e8LHJFb-XC92jRVw'
+  document.getElementById('myDiv05').innerHTML =  document.getElementById('myText05').value               }      }
         </script>
     </head>
-
     <body class="body01">
-
         <form class="form01">
-            <input type="text" placeholder="Enter name" id="nameInput">
-         <br>
-            <input type="number" placeholder="Enter age" id="ageInput">
-         <br>
-            <input type="text" placeholder="Enter career choice" id="jobInput">
-         <br>
+            <input type="text" placeholder="Enter name" id="nameInput">     <br>
+            <input type="number" placeholder="Enter age" id="ageInput">       <br>
+            <input type="text" placeholder="Enter career choice" id="jobInput">     <br>
             <input type="button" value="You are?" class="buttonStyle01" align="center" onClick="updateOutput()">
         </form>
-
         <div id="myDiv01" align="center">...</div>
-
   <style> 
-
-  
-@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
-  
-  body {
-    
-  
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap'); 
+  body {  
 font-family: 'Oswald', sans-serif; 
     font-size: 30px;
     background-color: black;
-       background-image: url(https://i.ytimg.com/vi/xzMBzDdCp2o/maxresdefault.jpg);
-    
+       background-image: url(https://i.ytimg.com/vi/xzMBzDdCp2o/maxresdefault.jpg);    
     color: white;
     text-align: center;
 background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
-  
-  }
-  
-  a {
-    color: #white;
-  }
-  
-  a:hover {
-    color: white;
-  } 
-  
-  
-  h1 {
-
-    text-align: center;
-    padding-top: 60px;
-
-  
-  }
-
-
-  
-  .background-image {
-    filter: blur(2px);
-    -webkit-filter: blur(8px);
-  }
+  background-size: cover;    }  
+  a { color: #white;  }  
+  a:hover {    color: white;  }   
+  h1 {  text-align: center;  padding-top: 60px;    }  
+  .background-image {    filter: blur(2px);    -webkit-filter: blur(8px);  }
