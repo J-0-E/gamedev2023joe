@@ -7,7 +7,7 @@ T2A01 (I Spy)
        myString = document.getElementById('myArea01').value.toLowerCase().split('')
        for (let myLoop=0;   myLoop < myString.length; myLoop++){
           myTemp = myString[myLoop]
-          if (myString[myLoop] == 'a') {myTemp  = 'b'}
+      if (myString[myLoop] == 'a') {myTemp  = 'b'}
       if (myString[myLoop] == 'A') {myTemp  = 'B'}
       if (myString[myLoop] == 'b') {myTemp  = 'c'}
       if (myString[myLoop] == 'B') {myTemp  = 'C'}                                                                                                                              
@@ -56,7 +56,9 @@ T2A01 (I Spy)
       if (myString[myLoop] == 'x') {myTemp  = 'y'}
       if (myString[myLoop] == 'X') {myTemp  = 'Y'}                                                                                  
       if (myString[myLoop] == 'y') {myTemp  = 'z'}
-      if (myString[myLoop] == 'Y') {myTemp  = 'Z'}                                            
+      if (myString[myLoop] == 'Y') {myTemp  = 'Z'} 
+      if (myString[myLoop] == 'z') {myTemp  = '_'} 
+      if (myString[myLoop] == 'Z') {myTemp  = '/'}         
       if (myString[myLoop] == ';') {myTemp  = '#'}
       if (myString[myLoop] == '!') {myTemp  = '~'}
       if (myString[myLoop] == '0') {myTemp  = '?'}                                      
@@ -69,7 +71,21 @@ T2A01 (I Spy)
       if (myString[myLoop] == '7') {myTemp  = '^'}                                      
       if (myString[myLoop] == '8') {myTemp  = '('}
       if (myString[myLoop] == '9') {myTemp  = ')'}
-      if (myString[myLoop] == '.') {myTemp  = '$'}                                                                                                              
+      if (myString[myLoop] == '.') {myTemp  = '$'} 
+      if (myString[myLoop] == '#') {myTemp  = ';'}
+      if (myString[myLoop] == '~') {myTemp  = '!'}
+      if (myString[myLoop] == '?') {myTemp  = '0'}                                      
+      if (myString[myLoop] == '+') {myTemp  = '1'}
+      if (myString[myLoop] == '=') {myTemp  = '2'}
+      if (myString[myLoop] == '-') {myTemp  = '3'}
+      if (myString[myLoop] == '*') {myTemp  = '4'}
+      if (myString[myLoop] == '@') {myTemp  = '5'}
+      if (myString[myLoop] == '%') {myTemp  = '6'}
+      if (myString[myLoop] == '^') {myTemp  = '7'}                                      
+      if (myString[myLoop] == '(') {myTemp  = '8'}
+      if (myString[myLoop] == ')') {myTemp  = '9'}
+      if (myString[myLoop] == '$') {myTemp  = '.'}                  
+           
       myString[myLoop] = myTemp   }                                        
    document.getElementById('myArea02').value = myString.join('')}"><br><br>
 <textarea id="myArea02" rows=4 cols=70></textarea><br> 
@@ -77,7 +93,9 @@ T2A01 (I Spy)
    let myTemp = ''
    myString = document.getElementById('myArea02').value.split('')
    for (let myLoop=0;   myLoop < myString.length; myLoop++){
-      myTemp = myString[myLoop]
+      myTemp = myString[myLoop] 
+      if (myString[myLoop] == 'a') {myTemp  = '_'}
+      if (myString[myLoop] == 'A') {myTemp  = '/'}  
       if (myString[myLoop] == 'b') {myTemp  = 'a'}
       if (myString[myLoop] == 'B') {myTemp  = 'A'}      
       if (myString[myLoop] == 'c') {myTemp  = 'b'}
@@ -127,7 +145,19 @@ T2A01 (I Spy)
       if (myString[myLoop] == 'y') {myTemp  = 'x'}
       if (myString[myLoop] == 'Y') {myTemp  = 'X'}                                                                                  
       if (myString[myLoop] == 'z') {myTemp  = 'y'}
-      if (myString[myLoop] == 'Z') {myTemp  = 'Y'}                                                  
+      if (myString[myLoop] == 'Z') {myTemp  = 'Y'}          
+      if (myString[myLoop] == ';') {myTemp  = '#'}
+      if (myString[myLoop] == '!') {myTemp  = '~'}
+      if (myString[myLoop] == '0') {myTemp  = '?'}                                      
+      if (myString[myLoop] == '1') {myTemp  = '+'}
+      if (myString[myLoop] == '2') {myTemp  = '='}
+      if (myString[myLoop] == '3') {myTemp  = '-'}
+      if (myString[myLoop] == '4') {myTemp  = '*'}
+      if (myString[myLoop] == '5') {myTemp  = '@'}
+      if (myString[myLoop] == '6') {myTemp  = '%'}
+      if (myString[myLoop] == '7') {myTemp  = '^'}                                      
+      if (myString[myLoop] == '8') {myTemp  = '('}
+      if (myString[myLoop] == '9') {myTemp  = ')'}
       if (myString[myLoop] == '#') {myTemp  = ';'}
       if (myString[myLoop] == '~') {myTemp  = '!'}
       if (myString[myLoop] == '?') {myTemp  = '0'}                                      
