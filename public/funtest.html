@@ -1,27 +1,22 @@
 <h1> FunTest#2 </h1>
 <input id="myNum01" type=number value="4"> <br>
-<input type=button value="LOOP NOW" onclick="{
-  document.getElementById('myDiv01').innerHTML = ''
-  let myTemp = '' 
-  let myMax = parseInt(document.getElementById('myNum01').value) 
-  for (let myLoop = 0; myLoop < myMax; myLoop+++){
-    if (myLoop*3 >myMax){
-      myTemp += ' Tom '
-    }
-    myTemp += ' Fred WOW '
-    myTemp += ' Mary '
-  }  
-  document.getElementById('myDiv01').innerHTML = myTemp
-}">
+<input type=button value="Loop my Array" onclick="bob()">
 <div id="myDiv01">...</div>
-   <style>   
+  <script> 
+    const array = [ 'tom' 'fred' 'mary' ] 
+    const output = document.getElementById('myDiv01')
+    function bob(){
+      for (let i=0; i<array.length; i++){
+      output.textContent+='{array[i]}'
+      if(array[i]=== "fred")}
+    output.textContent += 'wow'}
+  </script>
+    <style> 
 @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');  
-  body {      font-family: 'Oswald', sans-serif;   font-size: 30px; background-color: black;
-background-image: url(https://www.ohsat.com/tutorial/megalaga/megalaga-1/images/scrolling.gif);
-    background-size: cover;    background-repeat: repeat-x;      background-position: center;   background-attachment: fixed;   color: #383838;    text-align: center;    }  
-  a {    color: #636363;  }  
+  body{font-family:'Oswald',sans-serif;font-size:30px;background-color:black;background-image:url(https://i.ytimg.com/vi/xzMBzDdCp2o/maxresdefault.jpg);color:white;text-align:center;background-position:center;
+       background-repeat:no-repeat;background-size:cover;}
+  a {    color: #white;  }  
   a:hover {    color: white;  }   
-  h1 {    text-align: center;    padding-top: 60px;  }  
-  .background-image {    filter: blur(2px);    -webkit-filter: blur(8px);  }  
-  </style> 
-</body>
+  h1 {    text-align: center;    padding-top: 60px;    }  
+  .background-image {    filter: blur(2px);    -webkit-filter: blur(8px);  }
+</style>
