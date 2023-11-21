@@ -1,0 +1,21 @@
+<h1> FunTest#2 </h1>
+<input type=button value="Basic for loop with decisions" onclick="{
+  document.getElementById('myDiv01').innerHTML = ''
+  let myTemp = ''
+  
+  let myMax = parseInt(document.getElementById('myNum01').value)
+  
+  for (let myLoop = 0; myLoop < myMax; myLoop+++){
+    if (myLoop*3 >myMax){
+      myTemp += 'Tom'
+    }
+    
+    myTemp += 'Fred wow'
+
+  
+    myTemp += 'Mary'
+}
+  document.getElementById('myDiv01').innerHTML = myTemp
+}">
+
+<div id="myDiv01">...</div>
