@@ -1,12 +1,20 @@
-<h1> GAME TEMPLATE </h1>
-<br>
+
+<h6> Version 0.0.1 </h6>
+
+<body id="myBody" style="background-repeat:repeat; background-size: 80%" background="https://i5.walmartimages.ca/images/Large/231/793/6000204231793.jpg">
+
+<h1 align=center>t2a11 Game Template by Joe</h1>
+<br><br><br><br>
+
 <script>
+
    // global variables here
    let myGlobalX = 0
    let myClock
-   let myScore = 1
+
+
    // global functions here
-function myHitOther (my1,my2){
+function myHitOther(my1,my2){
    left1   = parseInt(document.getElementById(my1).style.left)
    right1  = left1 + parseInt(document.getElementById(my1).style.width)
    top1    = parseInt(document.getElementById(my1).style.top)   
@@ -19,72 +27,45 @@ function myHitOther (my1,my2){
        (bottom1 >=  top2   ) &&
        (left1   <=  right2 ) &&
        (top1    <=  bottom2) ){
-       return true   }}
+       return true
+   }
+}
+
+
 function myCheckHit(){
-   document.all.myText01.value = myScore  // show the present score
    if ( myHitOther('myImg01','myImg02') ){
-      document.getElementById('myImg01').style.left = '20px'
-      document.all.myText01.value = 'You were spotted!'  
-      myScore -= 1   }      
-   if ( myHitOther('myImg01','myImg03') ){
-       //alert('You cannot fight without a pokeman')
-      document.getElementById('myImg01').style.left = '20px'
-      document.all.myText01.value = 'You were spotted!'  
-      myScore -= 1   }      
-  // You need pokeman to fight
-   if (myScore <= 0){
-    document.all.myText01.value = 'Do not get spotted!'  
-    alert('Do not get spotted!')
-    location = 'https://www.google.ca'   }
-   // You got a greatball!
-   if ( myHitOther('myImg01','myImg04') ){
-      document.all.myText01.value = 'You found a new area!'  
-       alert('You found a new area!')
-      document.getElementById('myImg01').style.left = '20px'
-      location = 'https://www.google.ca'   }
-   // more if statements here}
+       alert('you lose')  
+       document.getElementById('myImg01').style.left = '20px'
+       location = 'https://www.google.ca'  // go to your next level
+   }
+
+
+   // more if statements here like the above
+
+
+
+}  // end of myCheckHit()
+
+
 </script>
-<body id="myBody" style="background-repeat:repeat; background-size: 80%" background="myBackground01.jpg"  onkeydown="{
-   document.all.myText01.value = event.key
-   if (event.key == 'd') {  // d = go right
-     document.getElementById('myImg01').style.left = parseInt(document.getElementById('myImg01').style.left) + 10 + 'px'   }   
-   if (event.key == 's') {   // s = go down
-      document.getElementById('myImg01').style.top = parseInt(document.getElementById('myImg01').style.top) + 10 + 'px'   }  
-   if (event.key == 'a') {   // a = go left
-      document.getElementById('myImg01').style.left = parseInt(document.getElementById('myImg01').style.left) + -10 + 'px'      }
-      if (event.key == 'w') {   // w = go up
-      document.getElementById('myImg01').style.top = parseInt(document.getElementById('myImg01').style.top) + -10 + 'px'      }
-   // put more here
-  myCheckHit()     // checks for all collisions}">
-<h1 align=center><font color=Red> Use WASD to walk around, dont get spotted by the enemies! </font></h1>
-<input id="myText01" type=text value="" size=50 placeholder="Feedback here"><br>
-<input type=button value="Right" onTouchStart="{this.click(); event.preventDefault();}" onclick="{
-  document.getElementById('myImg01').style.right = parseInt(document.getElementById('myImg01').style.right) + 10 + 'px'
-  myCheckHit()     // checks for all collisions}">
-<input type=button value="Down" onTouchStart="{this.click(); event.preventDefault();}" onclick="{
-  document.getElementById('myImg01').style.bottom = parseInt(document.getElementById('myImg01').style.bottom) + 10 + 'px'
-  myCheckHit()     // checks for all collisions}">
-<input type=button value="Left" onTouchStart="{this.click(); event.preventDefault();}" onclick="{
-  document.getElementById('myImg01').style.left = parseInt(document.getElementById('myImg01').style.left) + -10 + 'px'
-  myCheckHit()     // checks for all collisions}"><br><br>
-<input type=button value="Up" onTouchStart="{this.click(); event.preventDefault();}" onclick="{
-  document.getElementById('myImg01').style.top = parseInt(document.getElementById('myImg01').style.top) + -10 + 'px'
-  myCheckHit()     // checks for all collisions}"><br><br>
-<style>
-img:hover {
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);}
-</style>
-<img id="myImg01" src="https://static.miraheze.org/thefinalrumblewiki/9/95/Knight_%28Hollow_Knight%29.png"  style="position:absolute; width:100px; height:80px; left: 50px; top:190px;">
-<img id="myImg02" src="https://static.wikia.nocookie.net/hollowknight/images/1/1b/B_Husk_Guard.png/revision/latest?cb=20170411171316"  style="position:absolute; width:165 height:135; left:350px; top:190px;">
-<img id="myImg03" src="https://tiermaker.com/images/templates/the-ultimate-hollow-knight-enemies-tier-list-/1670719921.png"  style="position:absolute; width:165; height:135; left:390px; top:240px;">
-<img id="myImg04" src="https://tl.vhv.rs/dpng/s/512-5124548_pokemon-ball-8-bit-png-download-pokeball-pixel.png"  style="position:absolute; width:100px; height:80px; left:773px; top:358px;">
-<style> 
-     body {
-       background-image: url(https://wallpapercave.com/wp/wp4265351.jpg);  
-background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover; 
-        overflow: hidden;  } 
-  </style> 
-</body>
+
+<img id="myImg01" style="position:absolute; width:100px; height:80px; top:0px; left:50px;"  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgl7YHKK_yjEW-K_D9yt6Qm97Z52E6EyR5hw&usqp=CAU">
+<img id="myImg02" style="position:absolute; width:100px; height:80px; top:0px; left:250px;" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/7614/production/_105482203__105172250_gettyimages-857294664.jpg">
+
+<input type=button value="Auto Background Left" onclick="{
+  clearInterval(myClock)
+  let myTemp = '100px 0px'
+  myClock = setInterval(function(){
+      myGlobalX -= 5
+      myTemp =  myGlobalX + 'px 0px'
+      document.getElementById('myBody').style.backgroundPosition = myTemp
+  }, 100)
+    
+}">
+
+
+<input type=button value="Image Right Fast Button" onTouchStart="{this.click(); event.preventDefault();}" onclick="{
+  document.getElementById('myImg01').style.left = parseInt(document.getElementById('myImg01').style.left) + 10 + 'px'
+  myCheckHit()     // checks for all collisions
+}"><br><br>
+
