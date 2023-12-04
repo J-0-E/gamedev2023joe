@@ -1,56 +1,29 @@
 <h1> GAME TEMPLATE </h1>
-
  <h1 align=center>Level One</h1>
 <br><br><br><br>
-
 <head>
-   <h4> Use WASD to move Player into hole </h4>
-   
-   
+   <h4> Use WASD to move Player into hole </h4>      
 </head>
-
-
-
-<style>
-   
+<style>   
    body{
     background-repeat: repeat;
     overflow: hidden;
     background-size: 80%;
-    background-image: url('https://static.wikia.nocookie.net/hollowknight/images/f/fc/Screenshot_HK_Fungal_Wastes_19.png/revision/latest/scale-to-width-down/1920?cb=20210202172604')
-   }
-   
-   
+    background-image: url('https://static.wikia.nocookie.net/hollowknight/images/f/fc/Screenshot_HK_Fungal_Wastes_19.png/revision/latest/scale-to-width-down/1920?cb=20210202172604')   }      
 </style>
-
-
-
-
-
-
-
 <body>
-
-
 <script>
-
  let mySound2 = new Audio('soundfile here')
  let mySound3 = new Audio('soundfile here')
    // global variables here
    let myGlobalX = 0
    let myClock
-
 function mygravity() {
 if( parseInt(document.getElementById('myImg01').style.top)    <= 590){
  objImage.style.top = parseInt(objImage.style.top) + 5 + "px";
  myObstacle()
- myObstacle2()
- }
-   }
-  
-
-   setInterval(mygravity,100)
-   
+ myObstacle2() }   }  
+   setInterval(mygravity,100)  
    // global functions here
 function myHitOther(my1,my2){
    left1   = parseInt(document.getElementById(my1).style.left)
@@ -65,70 +38,40 @@ function myHitOther(my1,my2){
        (bottom1 >=  top2   ) &&
        (left1   <=  right2 ) &&
        (top1    <=  bottom2) ){
-       return true
-   }
-}
-
-
+       return true   }}
 function myCheckHit(){
    if ( myHitOther('myImg01','myImg02') ){
        alert('You did it!')  
        document.getElementById('myImg01').style.left = '900px'
-       location = 'https://www.google.ca/?safe=active&ssui=on'  // go to your next level
-   }
-}
- 
- 
-  
+       location = 'https://www.google.ca/?safe=active&ssui=on'  // go to your next level   }}    
 function myObstacle(){
    if ( myHitOther('myImg01','myImg03') ){
        mySound3.play()
        alert('You Lose')  
        document.getElementById('myImg01').style.left = '5px'
-       location = 't2a07-template-joe.html'  // go to your next level
-   }
-}
-
-   
- 
+       location = 't2a07-template-joe.html'  // go to your next level   }} 
  function myObstacle2(){
    if ( myHitOther('myImg01','myImg04') ){
         mySound3.play()
        alert('Wait what...')  
        document.getElementById('myImg01').style.left = '-900px'
-       location = 'secret.html'  // go to your next level
-   }
-}
-   
+       location = 'secret.html'  // go to your next level   }}   
 </script>
-
 <img id="myImg01" style="position:absolute; width:100px; height:80px; top: 500px; left:200px;"  src="https://cdn.imgbin.com/17/18/10/imgbin-hollow-knight-ori-and-the-blind-forest-video-game-indie-game-others-RWp1Ufv77CkxS2qC11kVX7dPe.jpg">
 <img id="myImg02" style="position:absolute; width:100px; height:80px; top: 590px; left:500px;" src="https://i.imgur.com/1CoXuJw.png">
 <img id="myImg04" style="position:absolute; width:100px; height:80px; top: 590px; left:2000px;"  src="https://i2.wp.com/sreditingzone.com/wp-content/uploads/2018/07/png-light-6.png?resize=651%2C600&ssl=1">   
-
   <body id="myBody" style="background-repeat:repeat; background-size: 80%" background="myBackground01.jpg"  onkeydown="{
    document.all.myText01.value = event.key
    if (event.key == 'd') {  // d = go right
-     document.getElementById('myImg01').style.left = parseInt(document.getElementById('myImg01').style.left) + 10 + 'px'
-   }   
+     document.getElementById('myImg01').style.left = parseInt(document.getElementById('myImg01').style.left) + 10 + 'px'   }   
    if (event.key == 's') {   // s = go down
-      document.getElementById('myImg01').style.top = parseInt(document.getElementById('myImg01').style.top) + 10 + 'px'
-   }  
+      document.getElementById('myImg01').style.top = parseInt(document.getElementById('myImg01').style.top) + 10 + 'px'   }  
    if (event.key == 'a') {   // a = go left
-      document.getElementById('myImg01').style.left = parseInt(document.getElementById('myImg01').style.left) + -10 + 'px'
-      }
+      document.getElementById('myImg01').style.left = parseInt(document.getElementById('myImg01').style.left) + -10 + 'px'      }
       if (event.key == 'w') {   // w = go up
-      document.getElementById('myImg01').style.top = parseInt(document.getElementById('myImg01').style.top) + -10 + 'px'
-      }
+      document.getElementById('myImg01').style.top = parseInt(document.getElementById('myImg01').style.top) + -10 + 'px'      }
    // put more here
-  myCheckHit()     // checks for all collisions
-}">
-        
-
-
+  myCheckHit()     // checks for all collisions}">       
     <body onkeydown="getKeyAndMove(event)">
-
-        </body>
-   
-   
+        </body>      
    </html>
