@@ -24,22 +24,22 @@ function myCheckHit(){
    document.all.myText01.value = myScore  // show the present score
    if ( myHitOther('myImg01','myImg02') ){
       document.getElementById('myImg01').style.left = '20px'
-      document.all.myText01.value = 'You need a Pokeman'  
+      document.all.myText01.value = 'You were spotted!'  
       myScore -= 1   }      
    if ( myHitOther('myImg01','myImg03') ){
        //alert('You cannot fight without a pokeman')
       document.getElementById('myImg01').style.left = '20px'
-      document.all.myText01.value = 'You need a Pokeman'  
+      document.all.myText01.value = 'You were spotted!'  
       myScore -= 1   }      
   // You need pokeman to fight
    if (myScore <= 0){
-    document.all.myText01.value = 'You need pokeman to fight!'  
-    alert('You need pokeman to fight')
+    document.all.myText01.value = 'Do not get spotted!'  
+    alert('Do not get spotted!')
     location = 'https://www.google.ca'   }
    // You got a greatball!
    if ( myHitOther('myImg01','myImg04') ){
-      document.all.myText01.value = 'You obtained a Greatball!'  
-       alert('You obtained a Greatball with a pokeman inside!')
+      document.all.myText01.value = 'You found a new area!'  
+       alert('You found a new area!')
       document.getElementById('myImg01').style.left = '20px'
       location = 'https://www.google.ca'   }
    // more if statements here}
