@@ -6,7 +6,7 @@
    let myClock
    let myScore = 1
    // global functions here
-function myHitOther(my1,my2){
+function myHitOther (my1,my2){
    left1   = parseInt(document.getElementById(my1).style.left)
    right1  = left1 + parseInt(document.getElementById(my1).style.width)
    top1    = parseInt(document.getElementById(my1).style.top)   
@@ -56,7 +56,7 @@ function myCheckHit(){
       document.getElementById('myImg01').style.top = parseInt(document.getElementById('myImg01').style.top) + -10 + 'px'      }
    // put more here
   myCheckHit()     // checks for all collisions}">
-<h1 align=center><font color=Red> Use WASD to walk around, dont get spotted by the other trainers! </font></h1>
+<h1 align=center><font color=Red> Use WASD to walk around, dont get spotted by the enemies! </font></h1>
 <input id="myText01" type=text value="" size=50 placeholder="Feedback here"><br>
 <input type=button value="Right" onTouchStart="{this.click(); event.preventDefault();}" onclick="{
   document.getElementById('myImg01').style.right = parseInt(document.getElementById('myImg01').style.right) + 10 + 'px'
