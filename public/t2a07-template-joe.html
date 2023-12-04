@@ -1,29 +1,10 @@
 <h1> GAME TEMPLATE </h1>
- <h1 align=center>Level One</h1>
-<br><br><br><br>
-<head>
-   <h4> Use WASD to move Player into hole </h4>      
-</head>
-<style>   
-   body{
-    background-repeat: repeat;
-    overflow: hidden;
-    background-size: 80%;
-    background-image: url('https://static.wikia.nocookie.net/hollowknight/images/f/fc/Screenshot_HK_Fungal_Wastes_19.png/revision/latest/scale-to-width-down/1920?cb=20210202172604')   }      
-</style>
-<body>
+<br>
 <script>
- let mySound2 = new Audio('soundfile here')
- let mySound3 = new Audio('soundfile here')
    // global variables here
    let myGlobalX = 0
    let myClock
-function mygravity() {
-if( parseInt(document.getElementById('myImg01').style.top)    <= 590){
- objImage.style.top = parseInt(objImage.style.top) + 5 + "px";
- myObstacle()
- myObstacle2() }   }  
-   setInterval(mygravity,100)  
+   let myScore = 1
    // global functions here
 function myHitOther(my1,my2){
    left1   = parseInt(document.getElementById(my1).style.left)
@@ -40,27 +21,30 @@ function myHitOther(my1,my2){
        (top1    <=  bottom2) ){
        return true   }}
 function myCheckHit(){
+   document.all.myText01.value = myScore  // show the present score
    if ( myHitOther('myImg01','myImg02') ){
-       alert('You did it!')  
-       document.getElementById('myImg01').style.left = '900px'
-       location = 'https://www.google.ca/?safe=active&ssui=on'  // go to your next level   }}    
-function myObstacle(){
+      document.getElementById('myImg01').style.left = '20px'
+      document.all.myText01.value = 'You need a Pokeman'  
+      myScore -= 1   }      
    if ( myHitOther('myImg01','myImg03') ){
-       mySound3.play()
-       alert('You Lose')  
-       document.getElementById('myImg01').style.left = '5px'
-       location = 't2a07-template-joe.html'  // go to your next level   }} 
- function myObstacle2(){
+       //alert('You cannot fight without a pokeman')
+      document.getElementById('myImg01').style.left = '20px'
+      document.all.myText01.value = 'You need a Pokeman'  
+      myScore -= 1   }      
+  // You need pokeman to fight
+   if (myScore <= 0){
+    document.all.myText01.value = 'You need pokeman to fight!'  
+    alert('You need pokeman to fight')
+    location = 'https://J-0-E.github.io/gamedev2022joe/public/t2a11-template-by-joe.html'   }
+   // You got a greatball!
    if ( myHitOther('myImg01','myImg04') ){
-        mySound3.play()
-       alert('Wait what...')  
-       document.getElementById('myImg01').style.left = '-900px'
-       location = 'secret.html'  // go to your next level   }}   
+      document.all.myText01.value = 'You obtained a Greatball!'  
+       alert('You obtained a Greatball with a pokeman inside!')
+      document.getElementById('myImg01').style.left = '20px'
+      location = 'https://J-0-E.github.io/gamedev2022joe/public/level2-by-joe.html'   }
+   // more if statements here}
 </script>
-<img id="myImg01" style="position:absolute; width:100px; height:80px; top: 500px; left:200px;"  src="https://cdn.imgbin.com/17/18/10/imgbin-hollow-knight-ori-and-the-blind-forest-video-game-indie-game-others-RWp1Ufv77CkxS2qC11kVX7dPe.jpg">
-<img id="myImg02" style="position:absolute; width:100px; height:80px; top: 590px; left:500px;" src="https://i.imgur.com/1CoXuJw.png">
-<img id="myImg04" style="position:absolute; width:100px; height:80px; top: 590px; left:2000px;"  src="https://i2.wp.com/sreditingzone.com/wp-content/uploads/2018/07/png-light-6.png?resize=651%2C600&ssl=1">   
-  <body id="myBody" style="background-repeat:repeat; background-size: 80%" background="myBackground01.jpg"  onkeydown="{
+<body id="myBody" style="background-repeat:repeat; background-size: 80%" background="myBackground01.jpg"  onkeydown="{
    document.all.myText01.value = event.key
    if (event.key == 'd') {  // d = go right
      document.getElementById('myImg01').style.left = parseInt(document.getElementById('myImg01').style.left) + 10 + 'px'   }   
@@ -71,7 +55,36 @@ function myObstacle(){
       if (event.key == 'w') {   // w = go up
       document.getElementById('myImg01').style.top = parseInt(document.getElementById('myImg01').style.top) + -10 + 'px'      }
    // put more here
-  myCheckHit()     // checks for all collisions}">       
-    <body onkeydown="getKeyAndMove(event)">
-        </body>      
-   </html>
+  myCheckHit()     // checks for all collisions}">
+<h1 align=center><font color=Red> Use WASD to walk around, dont get spotted by the other trainers! </font></h1>
+<input id="myText01" type=text value="" size=50 placeholder="Feedback here"><br>
+<input type=button value="Right" onTouchStart="{this.click(); event.preventDefault();}" onclick="{
+  document.getElementById('myImg01').style.right = parseInt(document.getElementById('myImg01').style.right) + 10 + 'px'
+  myCheckHit()     // checks for all collisions}">
+<input type=button value="Down" onTouchStart="{this.click(); event.preventDefault();}" onclick="{
+  document.getElementById('myImg01').style.bottom = parseInt(document.getElementById('myImg01').style.bottom) + 10 + 'px'
+  myCheckHit()     // checks for all collisions}">
+<input type=button value="Left" onTouchStart="{this.click(); event.preventDefault();}" onclick="{
+  document.getElementById('myImg01').style.left = parseInt(document.getElementById('myImg01').style.left) + -10 + 'px'
+  myCheckHit()     // checks for all collisions}"><br><br>
+<input type=button value="Up" onTouchStart="{this.click(); event.preventDefault();}" onclick="{
+  document.getElementById('myImg01').style.top = parseInt(document.getElementById('myImg01').style.top) + -10 + 'px'
+  myCheckHit()     // checks for all collisions}"><br><br>
+<style>
+img:hover {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);}
+</style>
+<img id="myImg01" src="https://static.miraheze.org/thefinalrumblewiki/9/95/Knight_%28Hollow_Knight%29.png"  style="position:absolute; width:100px; height:80px; left: 50px; top:190px;">
+<img id="myImg02" src="https://www.spriters-resource.com/resources/sheet_icons/24/26778.png"  style="position:absolute; width:165 height:135; left:350px; top:190px;">
+<img id="myImg03" src="https://www.spriters-resource.com/resources/sheet_icons/8/8142.png"  style="position:absolute; width:165; height:135; left:390px; top:240px;">
+<img id="myImg04" src="https://tl.vhv.rs/dpng/s/512-5124548_pokemon-ball-8-bit-png-download-pokeball-pixel.png"  style="position:absolute; width:100px; height:80px; left:773px; top:358px;">
+<style> 
+     body {
+       background-image: url(https://i.pinimg.com/736x/f6/13/cd/f613cdf4ff5629fe004b2c29989db663.jpg);  
+background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; 
+        overflow: hidden;  } 
+  </style> 
+</body>
