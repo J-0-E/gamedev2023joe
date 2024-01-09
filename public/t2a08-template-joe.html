@@ -1,10 +1,10 @@
-<h6> Version 0.0.1 </h6>
+<h6>  </h6>
 
- <h1 align=center>HEADER.</h1>
+ <h1 align=center>HEADER</h1>
 <br><br><br><br>
 
 <head>
-   <h4> use arrow keys to allow mario to jump infront of the car </h4>
+   <h4> WASD to move around </h4>
    
    
 </head>
@@ -16,7 +16,7 @@
    body{
     background-repeat: repeat;
     overflow: hidden;
-    background-size: 60%;
+    background-size: 100%;
     background-image: url('https://i.pinimg.com/originals/bc/23/b9/bc23b955d467d91ccbcb21ba44dabf17.gif')
    }
    
@@ -34,8 +34,8 @@
 
 <script>
 
- let mySound2 = new Audio('https://michaelcedrone.github.io/gamedevmike/public/Mario%20Jump.wav')
- let mySound3 = new Audio('https://michaelcedrone.github.io/gamedevmike/public/Mario%20Death%20-%20QuickSounds.com.mp3')
+ let mySound2 = new Audio('jump')
+ let mySound3 = new Audio('something')
 
    let myGlobalX = 0
    let myClock
@@ -51,7 +51,7 @@ if( parseInt(document.getElementById('myImg01').style.top)    <= 590){
 
    setInterval(mygravity,100)
    
-   // global functions here
+  
 function myHitOther(my1,my2){
    left1   = parseInt(document.getElementById(my1).style.left)
    right1  = left1 + parseInt(document.getElementById(my1).style.width)
