@@ -1,14 +1,56 @@
-<h1> -Home- </h1>
-<br>
+<h6> Version 0.0.1 </h6>
+
+ <h1 align=center>HEADER.</h1>
+<br><br><br><br>
+
+<head>
+   <h4> use arrow keys to allow mario to jump infront of the car </h4>
+   
+   
+</head>
+
+
+
+<style>
+   
+   body{
+    background-repeat: repeat;
+    overflow: hidden;
+    background-size: 100%;
+    background-image: url('https://i.stack.imgur.com/WHu9Z.png')
+   }
+   
+   
+</style>
+
+
+
+
+
+
+
+<body>
+
+
 <script>
 
-   // global variables here
+ let mySound2 = new Audio('https://michaelcedrone.github.io/gamedevmike/public/Mario%20Jump.wav')
+ let mySound3 = new Audio('https://michaelcedrone.github.io/gamedevmike/public/Mario%20Death%20-%20QuickSounds.com.mp3')
 
    let myGlobalX = 0
    let myClock
-   let myScore = 1
 
+function mygravity() {
+if( parseInt(document.getElementById('myImg01').style.top)    <= 590){
+ objImage.style.top = parseInt(objImage.style.top) + 5 + "px";
+ myObstacle()
+ myObstacle2()
+ }
+   }
+  
 
+   setInterval(mygravity,100)
+   
    // global functions here
 function myHitOther(my1,my2){
    left1   = parseInt(document.getElementById(my1).style.left)
@@ -29,112 +71,97 @@ function myHitOther(my1,my2){
 
 
 function myCheckHit(){
-   document.all.myText01.value = myScore  // show the present score
-
    if ( myHitOther('myImg01','myImg02') ){
-      document.getElementById('myImg01').style.left = '20px'
-      document.all.myText01.value = 'You need a Pokeman'  
-      myScore -= 1
-   }   
-   
+       alert('Mission failed, successfully!?')  
+       document.getElementById('myImg01').style.left = '900px'
+       location = 'NEXT LEVEL HERE'  // go to your next level
+   }
+}
+ 
+ 
+  
+function myObstacle(){
    if ( myHitOther('myImg01','myImg03') ){
-       //alert('You cannot fight without a pokeman')
-      document.getElementById('myImg01').style.left = '20px'
-      document.all.myText01.value = 'You need a Pokeman'  
-      myScore -= 1
-   }   
-   
-  // You need pokeman to fight
-   if (myScore <= 0){
-    document.all.myText01.value = 'You need pokeman to fight!'  
-    alert('You need pokeman to fight')
-    location = 'https://J-0-E.github.io/gamedev2022joe/public/t2a11-template-by-joe.html'
+       mySound3.play()
+       alert('You Lose')  
+       document.getElementById('myImg01').style.left = '5px'
+       location = 't2a08-template-joe.html'  //reloads the page
    }
-
-   // You got a greatball!
-
-   if ( myHitOther('myImg01','myImg04') ){
-      document.all.myText01.value = 'You obtained a Greatball!'  
-       alert('You obtained a Greatball with a pokeman inside!')
-      document.getElementById('myImg01').style.left = '20px'
-      location = 'https://J-0-E.github.io/gamedev2022joe/public/level2-by-joe.html'
-   }
-
-   // more if statements here
-
 }
 
-
+   
+ 
+ function myObstacle2(){
+   if ( myHitOther('myImg01','myImg04') ){
+        mySound3.play()
+       alert('Wait what...')  
+       document.getElementById('myImg01').style.left = '-900px'
+       location = 'NEXT LEVEL HERE'  
+   }
+}
+   
 </script>
 
+<img id="myImg01" style="position:absolute; width:100px; height:80px; top: 500px; left:200px;"  src="https://spencerfsu15.files.wordpress.com/2015/09/mario_8bit.png">
+<img id="myImg02" style="position:absolute; width:100px; height:80px; top: 590px; left:500px;" src="https://freepngimg.com/thumb/toyota/17-toyota-png-image-car-image.png">
+<img id="myImg04" style="position:absolute; width:100px; height:80px; top: 590px; left:2000px;"  src="https://i2.wp.com/sreditingzone.com/wp-content/uploads/2018/07/png-light-6.png?resize=651%2C600&ssl=1">   
+
+   
+    <script type="text/javascript">
+          
+            var objImage = null;
+            function init() {
+                objImage = document.getElementById("myImg01");
+                objImage.style.position = "absolute";  
+            }
+            function getKeyAndMove(e) {
+                var key_code = e.which || e.keyCode;
+                switch (key_code) {
+                    case 65: 
+                        moveLeft();
+                        break;
+                    case 87: 
+                        moveUp();
+                        break;
+                    case 68: 
+                        moveRight();
+                        break;
+                    case 83: 
+                        moveDown();
+                        break;
+                }
+            }
+            function moveLeft() {
+                objImage.style.left = parseInt(objImage.style.left) - 5 + "px";
+               myCheckHit()
+             myObstacle()
+             myObstacle2()
+            }
+            function moveUp() {
+             if( parseInt(document.getElementById('myImg01').style.top)    >= 590){
+                objImage.style.top = parseInt(objImage.style.top) - 200 + "px";
+                 mySound2.play()
+               myCheckHit()
+              myObstacle()
+              myObstacle2()
+              }
+            }
+     
+            function moveRight() {
+                objImage.style.left = parseInt(objImage.style.left) + 5 + "px";
+               myCheckHit()
+             myObstacle()
+             myObstacle2()
+            }
+            window.onload = init;
+            
+        </script>
+        
 
 
+    <body onkeydown="getKeyAndMove(event)">
 
-<body id="myBody" style="background-repeat:repeat; background-size: 80%" background="myBackground01.jpg"  onkeydown="{
-   document.all.myText01.value = event.key
-   if (event.key == 'd') {  // d = go right
-     document.getElementById('myImg01').style.left = parseInt(document.getElementById('myImg01').style.left) + 10 + 'px'
-   }   
-   if (event.key == 's') {   // s = go down
-      document.getElementById('myImg01').style.top = parseInt(document.getElementById('myImg01').style.top) + 10 + 'px'
-   }  
-   if (event.key == 'a') {   // a = go left
-      document.getElementById('myImg01').style.left = parseInt(document.getElementById('myImg01').style.left) + -10 + 'px'
-      }
-      if (event.key == 'w') {   // w = go up
-      document.getElementById('myImg01').style.top = parseInt(document.getElementById('myImg01').style.top) + -10 + 'px'
-      }
-   // put more here
-  myCheckHit()     // checks for all collisions
-}">
-
-
-
-
-
-<h1 align=center><font color=Red> Use WASD to walk around, dont get spotted by the other trainers! </font></h1>
-
-<input id="myText01" type=text value="" size=50 placeholder="Feedback here"><br>
-
-
-<input type=button value="Right" onTouchStart="{this.click(); event.preventDefault();}" onclick="{
-  document.getElementById('myImg01').style.right = parseInt(document.getElementById('myImg01').style.right) + 10 + 'px'
-  myCheckHit()     // checks for all collisions
-}">
-
-<input type=button value="Down" onTouchStart="{this.click(); event.preventDefault();}" onclick="{
-  document.getElementById('myImg01').style.bottom = parseInt(document.getElementById('myImg01').style.bottom) + 10 + 'px'
-  myCheckHit()     // checks for all collisions
-}">
-<input type=button value="Left" onTouchStart="{this.click(); event.preventDefault();}" onclick="{
-  document.getElementById('myImg01').style.left = parseInt(document.getElementById('myImg01').style.left) + -10 + 'px'
-  myCheckHit()     // checks for all collisions
-}"><br><br>
-<input type=button value="Up" onTouchStart="{this.click(); event.preventDefault();}" onclick="{
-  document.getElementById('myImg01').style.top = parseInt(document.getElementById('myImg01').style.top) + -10 + 'px'
-  myCheckHit()     // checks for all collisions
-}"><br><br>
-
-<style>
-img:hover {
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
-}
-</style>
-
-<img id="myImg01" src="https://static.tumblr.com/e6be82a972df11a53c55318e10b80882/4x5qifh/c1Yn43eag/tumblr_static_5fgbb3e8290kw44gg8084w8gc.gif"  style="position:absolute; width:100px; height:80px; left: 50px; top:190px;">
-<img id="myImg02" src="https://www.spriters-resource.com/resources/sheet_icons/24/26778.png"  style="position:absolute; width:165 height:135; left:350px; top:190px;">
-<img id="myImg03" src="https://www.spriters-resource.com/resources/sheet_icons/8/8142.png"  style="position:absolute; width:165; height:135; left:390px; top:240px;">
-<img id="myImg04" src="https://tl.vhv.rs/dpng/s/512-5124548_pokemon-ball-8-bit-png-download-pokeball-pixel.png"  style="position:absolute; width:100px; height:80px; left:773px; top:358px;">
-
-<style> 
-
-     body {
-       background-image: url(https://i.pinimg.com/736x/f6/13/cd/f613cdf4ff5629fe004b2c29989db663.jpg);  
-background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover; 
-        overflow: hidden;
-  } 
-  </style> 
-</body>
+        </body>
+   
+   
+   </html>
