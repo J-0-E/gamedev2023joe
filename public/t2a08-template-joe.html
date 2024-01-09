@@ -41,7 +41,7 @@
    let myClock
 
 function mygravity() {
-if( parseInt(document.getElementById('myImg01').style.top)    <= 590){
+if( parseInt(document.getElementById('myImg01').style.top)    <= 300){
  objImage.style.top = parseInt(objImage.style.top) + 5 + "px";
  myObstacle()
  myObstacle2()
@@ -138,7 +138,7 @@ function myObstacle(){
              myObstacle2()
             }
             function moveUp() {
-             if( parseInt(document.getElementById('myImg01').style.top)    >= 590){
+             if( parseInt(document.getElementById('myImg01').style.top)    >= 300){
                 objImage.style.top = parseInt(objImage.style.top) - 200 + "px";
                  mySound2.play()
                myCheckHit()
