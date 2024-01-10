@@ -72,7 +72,7 @@ function myHitOther(my1,my2){
 
 function myCheckHit(){
    if ( myHitOther('myImg01','myImg02') ){
-       alert('Mission failed, successfully!?')  
+       alert('Next Level')  
        document.getElementById('myImg01').style.left = '900px'
        location = 'NEXT LEVEL HERE'  // go to your next level
    }
@@ -83,7 +83,7 @@ function myCheckHit(){
 function myObstacle(){
    if ( myHitOther('myImg01','myImg03') ){
        mySound3.play()
-       alert('You Lose')  
+       alert('Retry')  
        document.getElementById('myImg01').style.left = '5px'
        location = 't2a08-template-joe.html'  //reloads the page
    }
@@ -94,7 +94,7 @@ function myObstacle(){
  function myObstacle2(){
    if ( myHitOther('myImg01','myImg04') ){
         mySound3.play()
-       alert('Wait what...')  
+       alert('HUH')  
        document.getElementById('myImg01').style.left = '-900px'
        location = 'SECERET'  
    }
