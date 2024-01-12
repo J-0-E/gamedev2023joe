@@ -1,45 +1,23 @@
 <h6>  </h6>
-
  <h1 align=center></h1>
 <br><br><br><br>
-
 <head>
-   <h4></h4>
-   
-   
+<h4></h4>      
 </head>
-
-
-
-<style>
-   
+<style>   
    body{
     background-repeat: repeat;
     overflow: hidden;
     background-size: 80%;
     background-image: url('https://i.pinimg.com/originals/bc/23/b9/bc23b955d467d91ccbcb21ba44dabf17.gif')
-   }
-   
-   
+   }      
 </style>
-
-
-
-
-
-
-
 <body>
-
-
 <script>
-
  let mySound2 = new Audio('jump')
  let mySound3 = new Audio('something')
-
    let myGlobalX = 0
    let myClock
-
 function mygravity() {
 if( parseInt(document.getElementById('myImg01').style.top)    <= 785){
  objImage.style.top = parseInt(objImage.style.top) + 5 + "px";
@@ -47,11 +25,7 @@ if( parseInt(document.getElementById('myImg01').style.top)    <= 785){
  myObstacle2()
  }
    }
-  
-
-   setInterval(mygravity,50)
-   
-  
+   setInterval(mygravity,50) 
 function myHitOther(my1,my2){
    left1   = parseInt(document.getElementById(my1).style.left)
    right1  = left1 + parseInt(document.getElementById(my1).style.width)
@@ -65,27 +39,21 @@ function myHitOther(my1,my2){
        (bottom1 >=  top2   ) &&
        (left1   <=  right2 ) &&
        (top1    <=  bottom2) ){
-       return true
-   }
-}
-
-
+       return true   }}
 function myCheckHit(){
    if ( myHitOther('myImg01','myImg02') ){
        alert('Next Level')  
        document.getElementById('myImg01').style.left = '900px'
        location = 'loop.html'  // go to your next level
    }
-}
- 
+} 
  function myCheckHit(){
    if ( myHitOther('myImg01','myImg05') ){
        alert('Next Level')  
        document.getElementById('myImg01').style.left = '900px'
        location = 'loop.html'
     }
-}
-  
+}  
 function myObstacle(){
    if ( myHitOther('myImg01','myImg03') ){
        mySound3.play()
@@ -93,18 +61,14 @@ function myObstacle(){
        document.getElementById('myImg01').style.left = '5px'
        location = 'loop.html'  //reloads the page
    }
-}
- 
+} 
  function myCheckHit(){
    if ( myHitOther('myImg01','myImg06') ){
        alert('Next Level')  
        document.getElementById('myImg01').style.left = '900px'
        location = 't2a08-template-joe.html'
     }
-}
-  
-   
- 
+} 
  function myObstacle2(){
    if ( myHitOther('myImg01','myImg04') ){
         mySound3.play()
@@ -112,18 +76,14 @@ function myObstacle(){
        document.getElementById('myImg01').style.left = '-900px'
        location = 'SECERET'  
    }
-}
-   
+}   
 </script>
-
 <img id="myImg01" style="position:absolute; width:100px; height:80px; top: 795px; left:200px;"  src="https://pngimg.com/uploads/circle/circle_PNG4.png">
 <img id="myImg02" style="position:absolute; width:100px; height:80px; top: 787px; left:5000px;" src="https://th.bing.com/th/id/R.c2da30ff335f0b78cc8ab586d899c811?rik=SrA2AGSqjxcRug&riu=http%3a%2f%2fvignette2.wikia.nocookie.net%2fscribblenauts%2fimages%2f8%2f8d%2fSteel_Spike.png%2frevision%2flatest%3fcb%3d20130105173440&ehk=3v7bvZAS0G2NvQrSYP59PqSUUkP550e4owxki4q64XY%3d&risl=&pid=ImgRaw&r=0"> 
 <img id="myImg04" style="position:absolute; width:100px; height:80px; top: 800px; left:2000px;"  src="https://i2.wp.com/sreditingzone.com/wp-content/uploads/2018/07/png-light-6.png?resize=651%2C600&ssl=1">   
 <img id="myImg05" style="position:absolute; width:100px; height:80px; top: 800px; left:1800px;"  src="https://vignette1.wikia.nocookie.net/nuclear-throne/images/9/90/Loop_Portal.gif/revision/latest?cb=20150906122138">   
-<img id="myImg06" style="position:absolute; width:100px; height:80px; top: 800px; left:700px;"  src="https://www.pngkey.com/png/full/234-2343253_spike-png.png">
-   
-    <script type="text/javascript">
-          
+<img id="myImg06" style="position:absolute; width:100px; height:80px; top: 800px; left:700px;"  src="https://www.pngkey.com/png/full/234-2343253_spike-png.png">   
+    <script type="text/javascript">         
             var objImage = null;
             function init() {
                 objImage = document.getElementById("myImg01");
@@ -160,23 +120,15 @@ function myObstacle(){
               myObstacle()
               myObstacle2()
               }
-            }
-     
+            }     
             function moveRight() {
                 objImage.style.left = parseInt(objImage.style.left) + 5 + "px";
                myCheckHit()
              myObstacle()
              myObstacle2()
             }
-            window.onload = init;
-            
-        </script>
-        
-
-
+            window.onload = init;            
+        </script>        
     <body onkeydown="getKeyAndMove(event)">
-
-        </body>
-   
-   
+        </body>      
    </html>
