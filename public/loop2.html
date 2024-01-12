@@ -94,7 +94,15 @@ function myObstacle(){
        location = 'loop.html'  //reloads the page
    }
 }
-
+ 
+ function myCheckHit(){
+   if ( myHitOther('myImg01','myImg06') ){
+       alert('Next Level')  
+       document.getElementById('myImg01').style.left = '900px'
+       location = 't2a08-template-joe.html'
+    }
+}
+  
    
  
  function myObstacle2(){
@@ -112,7 +120,7 @@ function myObstacle(){
 <img id="myImg02" style="position:absolute; width:100px; height:80px; top: 787px; left:5000px;" src="https://th.bing.com/th/id/R.c2da30ff335f0b78cc8ab586d899c811?rik=SrA2AGSqjxcRug&riu=http%3a%2f%2fvignette2.wikia.nocookie.net%2fscribblenauts%2fimages%2f8%2f8d%2fSteel_Spike.png%2frevision%2flatest%3fcb%3d20130105173440&ehk=3v7bvZAS0G2NvQrSYP59PqSUUkP550e4owxki4q64XY%3d&risl=&pid=ImgRaw&r=0"> 
 <img id="myImg04" style="position:absolute; width:100px; height:80px; top: 800px; left:2000px;"  src="https://i2.wp.com/sreditingzone.com/wp-content/uploads/2018/07/png-light-6.png?resize=651%2C600&ssl=1">   
 <img id="myImg05" style="position:absolute; width:100px; height:80px; top: 800px; left:1800px;"  src="https://vignette1.wikia.nocookie.net/nuclear-throne/images/9/90/Loop_Portal.gif/revision/latest?cb=20150906122138">   
-
+<img id="myImg06" style="position:absolute; width:100px; height:80px; top: 800px; left:700px;"  src="https://www.pngkey.com/png/full/234-2343253_spike-png.png">
    
     <script type="text/javascript">
           
